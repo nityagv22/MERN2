@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registration Form</title>
+    <style>
+        
+        body{
+            background-image: linear-gradient(rgb(244, 245, 199), rgb(231, 176, 237));
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        input.inp{
+            width: 98.7%;
+        }
+        th{
+            text-align: center;
+            font-style: bold;
+        }
+        tr.my{
+            text-align: right;
+        }
+        button.reg{
+            border-radius: 15px;
+            background-color: red;
+            color: white;
+            width: 110px;
+            height: 30px;
+        }
+        p{
+            color: red;
+        }
+
+    </style>
+</head>
+
+<body><div class = "full">
+    <form >
+      <center>
+        <table>
+            <caption style="color: blue; font-size: 30px;"><b>Registration form</b></caption>
+            
+            <tr>
+                <th><label for="fn">First Name</label></th>
+                <td><input type="text" name="fn" class="inp" id = "fn" ></td>
+                <td><p id="demo1"></p></td>
+            </tr>
+            <tr>
+                <th><label for="ln">Last Name</label></th>
+                <td><input type="text" name="ln" id= "ln" class ="inp"></td>
+                <td><p id="demo2"></p></td>
+            </tr>
+            <tr>
+                <th><label for="email">Email</label></th>
+                <td><input type="email" name="email" id= "email" class= "inp"></td>
+                <td><p id="demo3"></p></td>
+            </tr>
+            <tr>
+                <th><label for="pass">Password</label></th>
+                <td><input type="password" name="pass" id= "pass" class= "inp"></td>
+                <td><p id="demo4"></p></td>
+            </tr>
+            <tr>
+                <th><label for="repass">Re-enter Password</label></th>
+                <td><input type="password" name="repass" id="repass" class ="inp"></td>
+                <td><p id="demo5"></p></td>
+            </tr>
+            <tr>
+                <th rowspan = "2"><label>Gender</label></th>
+                <td>
+                    <input type="radio" name="gender">Male</td>
+                
+            </tr>
+            <tr><td><input type="radio" name="gender">Female
+            </td></tr>
+            <tr>
+                <th><label for="age">Age:</label></th>
+                <td><input type="number" name="age" id= "age" class = "inp"></td>
+                <td><p id="demo6"></p></td>
+            </tr>
+            <tr>
+                <th><label for="phn">Phone number:</label></th>
+                <td><input type="number" name="phn" id= "phn" class = "inp"></td>
+                <td><p id="demo7"></p></td>
+            </tr>
+            <tr>
+                <th><label for ="add">Address:</label></th>
+                <td><textarea name = "add" cols = "80" rows = "6" id = "add"></textarea></td>
+                <td><p id="demo8"></p></td>
+            </tr>
+            <tr>
+                <th><label for ="state">State:</label></th>
+                <td><input type="text" name="state" id="state" class="inp"></td>
+                <td><p id="demo9"></p></td>
+            </tr>
+            <tr>
+                <th><label>Country</label></th>
+                <td>
+                    <select>
+                        <option>Choose your country</option>
+                        <option>India</option>
+                        <option>United States Of America</option>
+                        <option>Spain</option>
+                        <option>England</option>
+                        <option>Italy</option>
+                        <option>Taiwan</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label>Languages known</label></th>
+                <td>
+                    <input type="checkbox">English
+                    <input type="checkbox">Kannada
+                    <input type="checkbox">Hindi
+                    <input type="checkbox">Telugu
+                </td>
+            </tr>
+            <tr><td colspan="2"><input type="checkbox"> Hereby I declare all the given details are true</td></tr>
+            <tr class="my"><td colspan="2" >Login in to <a href ="https://codemithra.com/">Ethnus </a>website</right></td></tr>
+            </table><br>
+                <button class = "reg" type="button" onclick="validateForm()">Register</button><br><br>
+      </center>
+    </form>
+   
+    <script>
+        
+        function validateForm(){
+            //First Name Validation
+            let firstninput = document.getElementById("fn");
+            let firstn = firstninput.value.trim();
+            let al1 = "";
+
+            if(firstn === ""){
+                al1 = "POOR";
+                firstninput.classList.add("error");
+            } else{
+                firstninput.classList.remove("error");
+            }
+
+            document.getElementById("demo1").innerHTML = al1;
+
+            //Last Name Validation
+            let lastninput = document.getElementById("ln");
+            let lastn = lastninput.value.trim();
+            let al2 = "";
+
+            if(lastn === ""){
+                al2 = "POOR";
+                lastninput.classList.add("error");
+            } else{
+                lastninput.classList.remove("error");
+            }
+
+            document.getElementById("demo2").innerHTML = al2;
+
+            //Email Validation
+            let emailinput = document.getElementById("email");
+            let emailRegex = /@/;
+            let al3 = "";
+
+            if(!emailinput.value.match(emailRegex)){
+                al3 = "POOR";
+                emailinput.classList.add("error");
+            } else{
+                firstninput.classList.remove("error");
+            }
+
+            document.getElementById("demo3").innerHTML = al3;
+
+            //Password Validation
+            let pwinput = document.getElementById("pass");
+            let pw = pwinput.value.trim();
+            let al4 = "";
+
+            if(pw === ""){
+                al4 = "POOR";
+                pwinput.classList.add("error");
+            } else{
+                pwinput.classList.remove("error");
+            }
+
+            document.getElementById("demo4").innerHTML = al4;
+
+            //Re-Password Validation
+            let rpwinput = document.getElementById("repass");
+            let rpw = rpwinput.value.trim();
+            let al5 = "";
+
+            if(rpw === "" || rpw !== pw){
+                al5 = "POOR OR MISMATCH";
+                rpwinput.classList.add("error");
+            } else{
+                rpwinput.classList.remove("error");
+            }
+
+            document.getElementById("demo5").innerHTML = al5;
+
+            //Age Validation
+            let ageinput = document.getElementById("age");
+            let age = ageinput.value.trim();
+            let al6 = "";
+
+            if(age === ""){
+                al6 = "POOR";
+                ageinput.classList.add("error");
+            } else{
+                ageinput.classList.remove("error");
+            }
+
+            document.getElementById("demo6").innerHTML = al6;
+
+            //Phone Number Validation
+            let phnoinput = document.getElementById("phn");
+            let phno = phnoinput.value.trim();
+            let al7 = "";
+
+            if(phno === ""){
+                al7 = "POOR";
+                phnoinput.classList.add("error");
+            } else{
+                phnoinput.classList.remove("error");
+            }
+
+            document.getElementById("demo7").innerHTML = al7;
+
+            //Address Validation
+            let addinput = document.getElementById("add");
+            let add = addinput.value.trim();
+            let al8 = "";
+
+            if(add === ""){
+                al8 = "POOR";
+                addinput.classList.add("error");
+            } else{
+                addinput.classList.remove("error");
+            }
+
+            document.getElementById("demo8").innerHTML = al8;
+
+            //State Validation
+            let stateinput = document.getElementById("state");
+            let state = stateinput.value.trim();
+            let al9 = "";
+
+            if(state === ""){
+                al9 = "POOR";
+                stateinput.classList.add("error");
+            } else{
+                stateinput.classList.remove("error");
+            }
+
+            document.getElementById("demo9").innerHTML = al9;
+        }
+    
+    </script>
+
+</div>
+
+</body>
+
+</html>
